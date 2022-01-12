@@ -12,10 +12,8 @@ from transaction001Data import insert_transaction001_values
 from transaction002Data import insert_transaction002_values
 
 
-def generate_tables():
-    
-    conn = sqlite3.connect('SQLDatabase6.db')
-    
+def generateTable():
+    conn = sqlite3.connect('SQLDatabase10.db')
     cur = conn.cursor()
     
     
@@ -54,5 +52,5 @@ def generate_tables():
 
 
 if __name__ == "__main__":
-    generate_tables()
+    generateTable()
 
