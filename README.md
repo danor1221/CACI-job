@@ -16,3 +16,8 @@ There is no need to run the function within generateTables.py as this creates a 
 does not need to be run as it already has and has removed desired transactions from transaction-001 and transaction-002. Sanitiser.py also adds a fourth column marked 'vendor' to make later
 stages easier. If you would like to experiment with these functions, you can change the database name from SQLDatabase.db to something else (eg. SQLDatabase01.db) and run them making sure
 to run them in the correct order (generateTables.py->sanitiser.py->getReports.py->reportPlot.py).
+
+## Results
+ - The file marked returnJSON.js is a JSON file that contains fradulent transactions that have occured.
+ - I was not able to get the binary file out.
+ - reportPlot.py generates the graphical report for fradulent transactions by state and fradulent transactions by vendor.
