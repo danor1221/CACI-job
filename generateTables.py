@@ -13,7 +13,7 @@ from transaction002Data import insert_transaction002_values
 
 
 def generateTable():
-    conn = sqlite3.connect('SQLDatabase10.db')
+    conn = sqlite3.connect('SQLDatabase.db')
     cur = conn.cursor()
     
     

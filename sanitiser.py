@@ -25,7 +25,7 @@ def addVendorColumns():
 
 
 def removeC(table):
-    conn = sqlite3.connect('SQLDatabase10.db')
+    conn = sqlite3.connect('SQLDatabase.db')
     cur = conn.cursor()
     
     try:
@@ -67,7 +67,7 @@ def removeC(table):
 
 
 def addVC(table):
-    conn = sqlite3.connect('SQLDatabase10.db')
+    conn = sqlite3.connect('SQLDatabase.db')
     cur = conn.cursor()
     
     cur.execute("""alter table """ + table + """

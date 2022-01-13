@@ -5,7 +5,10 @@ Created on Wed Jan 12 15:06:49 2022
 @author: danor
 """
 
-import sqlite3, time
+import sqlite3
+import time
+import json
+import collections
 
 
 
@@ -63,13 +66,43 @@ def getFradulentTransactions():
     callQueryAll(query)
     
     
+    
+    print ("Obtain Json of masked fradulent transactions")
+    
+    query = """
+                select transaction002.credit_card_number, transaction002.ipv4, transaction002.state
+                from transaction002
+                inner join fraud
+                on transaction002.credit_card_number = fraud.credit_card_number
+            """
+    conn = sqlite3.connect('SQLDatabase10.db')
+    cur = conn.cursor()
+    
+    cur.execute(query)
+    rows = cur.fetchall()
+    
+    objects_list = []
+    for row in rows:
+        d = collections.OrderedDict()
+        d['credit_card_number'] = row[0]
+        d['ipv4'] = row[1]
+        d['state'] = row[2]
+        objects_list.append(d)
+    
+    json_output = json.dumps(objects_list)
+        
+    with open("returnJSON.js", "w") as f:
+        f.write(json_output)
+    
+    conn.close()
 
+    
 
 
 
 
 def callQueryNum(query):
-    conn = sqlite3.connect('SQLDatabase10.db')
+    conn = sqlite3.connect('SQLDatabase.db')
     cur = conn.cursor()
     
     try:
@@ -82,7 +115,7 @@ def callQueryNum(query):
     conn.close()
 
 def callQueryAll(query):
-    conn = sqlite3.connect('SQLDatabase10.db')
+    conn = sqlite3.connect('SQLDatabase.db')
     cur = conn.cursor()
     
     try:

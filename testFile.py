@@ -51,7 +51,7 @@ class TestcallremoveC(unittest.TestCase):
         test removeC function by giving it a table with cards to be removed and
         making sure it removes the desired cards
         """
-        conn = sqlite3.connect('SQLDatabase10.db')
+        conn = sqlite3.connect('SQLDatabase.db')
         cur = conn.cursor()
         
         # create a testtable in the database
@@ -76,7 +76,7 @@ class TestcallremoveC(unittest.TestCase):
         sanitiser.removeC("testtableRC")
         
         
-        conn = sqlite3.connect('SQLDatabase10.db')
+        conn = sqlite3.connect('SQLDatabase.db')
         cur = conn.cursor()
         
         # create query to test testtable has no cards left in it
@@ -129,7 +129,7 @@ class TestcalladdVC(unittest.TestCase):
     and then adds the correct values to each row
     """
     def testAddsDesiredColumns(self):
-        conn = sqlite3.connect('SQLDatabase10.db')
+        conn = sqlite3.connect('SQLDatabase.db')
         cur = conn.cursor()
         
         # create a testtable in the database
@@ -159,7 +159,7 @@ class TestcalladdVC(unittest.TestCase):
         sanitiser.addVC("testtableVC")
         
         
-        conn = sqlite3.connect('SQLDatabase10.db')
+        conn = sqlite3.connect('SQLDatabase.db')
         cur = conn.cursor()
         
         # create query to test testtable has desired columns in it
