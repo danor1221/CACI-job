@@ -75,22 +75,29 @@ def getFradulentTransactions():
                 inner join fraud
                 on transaction002.credit_card_number = fraud.credit_card_number
             """
-    conn = sqlite3.connect('SQLDatabase10.db')
+    conn = sqlite3.connect('SQLDatabase.db')
     cur = conn.cursor()
     
     cur.execute(query)
     rows = cur.fetchall()
     
+    
     objects_list = []
     for row in rows:
         d = collections.OrderedDict()
-        d['credit_card_number'] = row[0]
+        
+        asStr = str(row[0])
+        size = len(asStr)
+        replacement = "*********"
+        asStr = asStr.replace(asStr[size - 9:], replacement)
+
+        d['credit_card_number'] = asStr
         d['ipv4'] = row[1]
         d['state'] = row[2]
         objects_list.append(d)
     
     json_output = json.dumps(objects_list)
-        
+    
     with open("returnJSON.js", "w") as f:
         f.write(json_output)
     
